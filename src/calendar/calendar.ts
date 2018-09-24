@@ -4,34 +4,7 @@ import * as _ from "lodash";
 
 @Component({
     selector: 'ion-calendar',
-    template: `
-    <ion-grid>
-        <ion-row justify-content-center>
-            <ion-col col-auto (click)="back()">
-                <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
-            </ion-col>
-            <ion-col col-auto>
-                <div>{{displayYear}} - {{displayMonth + 1 | monthName:lang}}</div>
-            </ion-col>
-            <ion-col col-auto (click)="forward()">
-                <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
-            </ion-col>
-        </ion-row>
-
-        <ion-row>
-            <ion-col class="center calendar-header-col" *ngFor="let head of weekHead">{{head | weekdayName:lang}}</ion-col>
-        </ion-row>
-
-        <ion-row class="calendar-row" *ngFor="let week of weekArray;let i = index">
-            <ion-col class="center calendar-col" (click)="day.onClick?day.onClick():daySelect(day,i,j)"
-            *ngFor="let day of week;let j = index"
-            [ngClass]="[day.isThisMonth?'this-month':'not-this-month',day.isToday?'today':'',day.isSelect?'select':'',day.hasEvent&&day.eventCSS?day.eventCSS:'']">
-                {{day.date}}
-            </ion-col>
-        </ion-row>
-
-    </ion-grid>
-`
+    template: './calendar.html'
 })
 
 export class Calendar {

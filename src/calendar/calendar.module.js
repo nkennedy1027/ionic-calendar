@@ -9,28 +9,22 @@ exports.__esModule = true;
 var core_1 = require("@angular/core");
 var ionic_angular_1 = require("ionic-angular");
 var calendar_1 = require("./calendar");
-var month_name_1 = require("./pipes/month-name");
-var weekday_name_1 = require("./pipes/weekday-name");
-var CalendarModule = /** @class */ (function () {
+var CalendarModule = (function () {
     function CalendarModule() {
     }
-    CalendarModule = __decorate([
-        core_1.NgModule({
-            declarations: [
-                calendar_1.Calendar,
-                month_name_1.monthName,
-                weekday_name_1.weekdayName
-            ],
-            imports: [
-                ionic_angular_1.IonicModule,
-            ],
-            exports: [
-                calendar_1.Calendar,
-                month_name_1.monthName,
-                weekday_name_1.weekdayName
-            ]
-        })
-    ], CalendarModule);
     return CalendarModule;
 }());
+CalendarModule = __decorate([
+    core_1.NgModule({
+        declarations: [
+            calendar_1.Calendar
+        ],
+        imports: [
+            ionic_angular_1.IonicModule,
+        ],
+        exports: [
+            calendar_1.Calendar
+        ]
+    })
+], CalendarModule);
 exports.CalendarModule = CalendarModule;

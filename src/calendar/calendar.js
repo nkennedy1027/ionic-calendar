@@ -9,7 +9,7 @@ exports.__esModule = true;
 var core_1 = require("@angular/core");
 var moment = require("moment");
 var _ = require("lodash");
-var Calendar = /** @class */ (function () {
+var Calendar = (function () {
     function Calendar() {
         this.onDaySelect = new core_1.EventEmitter();
         this.onMonthSelect = new core_1.EventEmitter();
@@ -23,7 +23,7 @@ var Calendar = /** @class */ (function () {
         this.dateArray = []; // Array for all the days of the month
         this.weekArray = []; // Array for each row of the calendar
         this.lastSelect = 0; // Record the last clicked location
-        this.weekHead = [0, 1, 2, 3, 4, 5, 6];
+        this.weekHead = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
         this.today();
         this.createMonth(this.displayYear, this.displayMonth);
     }
@@ -89,7 +89,7 @@ var Calendar = /** @class */ (function () {
         // Add the last few days of the previous month to the array
         //get event record
         // let record = this.getEventRecord()
-        if (firstDay !== 7) { // Sunday doesn't need to be shown for the previous month
+        if (firstDay !== 7) {
             var lastMonthStart = preMonthDays - firstDay + 1; // From the last few months start
             for (var i = 0; i < firstDay; i++) {
                 if (month === 0) {
@@ -229,25 +229,24 @@ var Calendar = /** @class */ (function () {
         this.dateArray[i * 7 + j].isSelect = true;
         this.onDaySelect.emit(day);
     };
-    __decorate([
-        core_1.Output()
-    ], Calendar.prototype, "onDaySelect");
-    __decorate([
-        core_1.Output()
-    ], Calendar.prototype, "onMonthSelect");
-    __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "events");
-    __decorate([
-        core_1.Input()
-    ], Calendar.prototype, "lang");
-    Calendar = __decorate([
-        core_1.Component({
-            selector: 'ion-calendar',
-            template: "\n    <ion-grid>\n        <ion-row justify-content-center>\n            <ion-col col-auto (click)=\"back()\">\n                <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\n            </ion-col>\n            <ion-col col-auto>\n                <div>{{displayYear}} - {{displayMonth + 1 | monthName:lang}}</div>\n            </ion-col>\n            <ion-col col-auto (click)=\"forward()\">\n                <ion-icon ios=\"ios-arrow-forward\" md=\"md-arrow-forward\"></ion-icon>\n            </ion-col>\n        </ion-row>\n\n        <ion-row>\n            <ion-col class=\"center calendar-header-col\" *ngFor=\"let head of weekHead\">{{head | weekdayName:lang}}</ion-col>\n        </ion-row>\n\n        <ion-row class=\"calendar-row\" *ngFor=\"let week of weekArray;let i = index\">\n            <ion-col class=\"center calendar-col\" (click)=\"day.onClick?day.onClick():daySelect(day,i,j)\"\n            *ngFor=\"let day of week;let j = index\"\n            [ngClass]=\"[day.isThisMonth?'this-month':'not-this-month',day.isToday?'today':'',day.isSelect?'select':'',day.hasEvent&&day.eventCSS?day.eventCSS:'']\">\n                {{day.date}}\n            </ion-col>\n        </ion-row>\n\n    </ion-grid>\n"
-        })
-    ], Calendar);
     return Calendar;
 }());
+__decorate([
+    core_1.Output()
+], Calendar.prototype, "onDaySelect");
+__decorate([
+    core_1.Output()
+], Calendar.prototype, "onMonthSelect");
+__decorate([
+    core_1.Input()
+], Calendar.prototype, "events");
+__decorate([
+    core_1.Input()
+], Calendar.prototype, "lang");
+Calendar = __decorate([
+    core_1.Component({
+        selector: 'ion-calendar',
+        template: './calendar.html'
+    })
+], Calendar);
 exports.Calendar = Calendar;
-//# sourceMappingURL=calendar.js.map
