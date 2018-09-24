@@ -229,6 +229,10 @@ var Calendar = (function () {
         this.dateArray[i * 7 + j].isSelect = true;
         this.onDaySelect.emit(day);
     };
+    Calendar.prototype.formatMonth = function (month) {
+        var monthsArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        return monthsArr[month];
+    };
     return Calendar;
 }());
 __decorate([
@@ -246,7 +250,7 @@ __decorate([
 Calendar = __decorate([
     core_1.Component({
         selector: 'ion-calendar',
-        template: "\n    <ion-grid>\n  <ion-row justify-content-center>\n    <ion-col col-auto (click)=\"back()\">\n      <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\n    </ion-col>\n    <ion-col col-auto>\n      <div>{{displayMonth + 1 }} {{displayYear}}</div>\n    </ion-col>\n    <ion-col col-auto (click)=\"forward()\">\n      <ion-icon ios=\"ios-arrow-forward\" md=\"md-arrow-forward\"></ion-icon>\n    </ion-col>\n  </ion-row>\n\n  <ion-row>\n    <ion-col class=\"center calendar-header-col\" *ngFor=\"let head of weekHead\">{{head}}</ion-col>\n  </ion-row>\n\n  <ion-row class=\"calendar-row\" *ngFor=\"let week of weekArray;let i = index\">\n    <ion-col class=\"center calendar-col\" (click)=\"daySelect(day,i,j)\" *ngFor=\"let day of week;let j = index\" [ngClass]=\"[day.isThisMonth?'this-month':'not-this-month',day.isToday?'today':'',day.isSelect?'select':'',day.hasEvent?'has-event':'']\">\n      {{day.date}}\n      <span class=\"eventBlip\" *ngIf=\"day.hasEvent\"></span>\n    </ion-col>\n  </ion-row>\n\n</ion-grid>\n\n    "
+        template: "\n    <ion-grid>\n    <ion-row justify-content-center>\n      <ion-col col-auto (click)=\"back()\">\n        <ion-icon ios=\"ios-arrow-back\" md=\"md-arrow-back\"></ion-icon>\n      </ion-col>\n      <ion-col col-auto>\n        <div>{{ formatMonth(displayMonth + 1) }} {{displayYear}}</div>\n      </ion-col>\n      <ion-col col-auto (click)=\"forward()\">\n        <ion-icon ios=\"ios-arrow-forward\" md=\"md-arrow-forward\"></ion-icon>\n      </ion-col>\n    </ion-row>\n  \n    <ion-row>\n      <ion-col class=\"center calendar-header-col\" *ngFor=\"let head of weekHead\">{{head}}</ion-col>\n    </ion-row>\n  \n    <ion-row class=\"calendar-row\" *ngFor=\"let week of weekArray;let i = index\">\n      <ion-col class=\"center calendar-col\" (click)=\"daySelect(day,i,j)\" *ngFor=\"let day of week;let j = index\" [ngClass]=\"[day.isThisMonth?'this-month':'not-this-month',day.isToday?'today':'',day.isSelect?'select':'',day.hasEvent?'has-event':'']\">\n        {{day.date}}\n        <span class=\"eventBlip\" *ngIf=\"day.hasEvent\"></span>\n      </ion-col>\n    </ion-row>\n  \n  </ion-grid>\n  \n\n    "
     })
 ], Calendar);
 exports.Calendar = Calendar;
