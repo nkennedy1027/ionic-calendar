@@ -53,7 +53,7 @@ export class Calendar {
     weekArray = []; // Array for each row of the calendar
     lastSelect: number = 0; // Record the last clicked location
 
-    weekHead: number[] = [0,1,2,3,4,5,6];
+    weekHead = ['S','M','T','W','T','F','S'];
 
     constructor() {
       this.today();
