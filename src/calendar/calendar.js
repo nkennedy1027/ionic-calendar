@@ -246,7 +246,7 @@ __decorate([
 Calendar = __decorate([
     core_1.Component({
         selector: 'ion-calendar',
-        template: './calendar.html'
+        template: 'calendar.html'
     })
 ], Calendar);
 exports.Calendar = Calendar;

@@ -4,7 +4,7 @@ import * as _ from "lodash";
 
 @Component({
     selector: 'ion-calendar',
-    template: './calendar.html'
+    template: 'calendar.html'
 })
 
 export class Calendar {
